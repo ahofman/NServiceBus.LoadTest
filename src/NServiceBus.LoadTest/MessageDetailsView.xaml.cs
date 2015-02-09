@@ -18,12 +18,12 @@ using System.Windows.Shapes;
 namespace NServiceBus.LoadTest
 {
 	/// <summary>
-	/// Interaction logic for MessageDetails.xaml
+	/// Interaction logic for MessageDetailsView.xaml
 	/// </summary>
-	public partial class MessageDetails : UserControl, IContent
+	public partial class MessageDetailsView : UserControl, IContent
 	{
-		
-		public MessageDetails()
+
+		public MessageDetailsView()
 		{
 			InitializeComponent();
 		}

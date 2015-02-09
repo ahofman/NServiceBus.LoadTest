@@ -1,4 +1,5 @@
 ﻿using FirstFloor.ModernUI.Presentation;
+using FirstFloor.ModernUI.Windows;
 using NServiceBus.LoadTest.TestMessageAssembly;
 using System;
 using System.Collections.Generic;
@@ -18,13 +19,13 @@ using System.Windows.Shapes;
 namespace NServiceBus.LoadTest
 {
 	/// <summary>
-	/// Interaction logic for Messages.xaml
+	/// Interaction logic for MessagesView.xaml
 	/// </summary>
-	public partial class Messages : UserControl
+	public partial class MessagesView : UserControl
 	{
 		public LinkCollection Links { get; set; }
 
-		public Messages()
+		public MessagesView()
 		{
 			InitializeComponent();
 
@@ -32,10 +33,11 @@ namespace NServiceBus.LoadTest
 
 			foreach (var t in typeof(CreateOrder).Assembly.GetTypes())
 			{
-				Links.Add(new Link { DisplayName = t.Name, Source = new Uri(string.Format("/MessageDetails.xaml#{0}", t.Name), UriKind.Relative) });
+				Links.Add(new Link { DisplayName = t.Name, Source = new Uri(string.Format("/MessageDetailsView.xaml#{0}", t.Name), UriKind.Relative) });
 			}
 
 			DataContext = this;
 		}
+
 	}
 }

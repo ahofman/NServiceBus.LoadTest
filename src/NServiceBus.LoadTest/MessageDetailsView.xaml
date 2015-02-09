@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="NServiceBus.LoadTest.MessageDetails"
+﻿<UserControl x:Class="NServiceBus.LoadTest.MessageDetailsView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -8,7 +8,11 @@
              d:DesignHeight="300" d:DesignWidth="300">
     <mui:ModernFrame Navigated="ModernFrame_Navigated">
         <Grid>
-            <ListBox ItemsSource="{Binding Properties}" Grid.IsSharedSizeScope="True">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <ListBox Grid.Row="0" ItemsSource="{Binding Properties}" Grid.IsSharedSizeScope="True">
                 <ListBox.ItemTemplate >
                     <DataTemplate>
                         <Grid>
@@ -26,6 +30,7 @@
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
+            <Button Grid.Row="1" Content="Send"/>
         </Grid>
     </mui:ModernFrame>
 </UserControl>

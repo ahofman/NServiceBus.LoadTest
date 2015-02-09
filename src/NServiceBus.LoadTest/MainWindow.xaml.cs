@@ -21,13 +21,11 @@ namespace NServiceBus.LoadTest
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : ModernWindow
+    public partial class MainWindowView : ModernWindow
     {
-        public MainWindow()
+		public MainWindowView()
         {
             InitializeComponent();
-
-            
         }
     }
 }
