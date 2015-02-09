@@ -62,6 +62,7 @@
     <Compile Include="BrowseForAssembly.xaml.cs">
       <DependentUpon>BrowseForAssembly.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MessagePropertyBinding.cs" />
     <Compile Include="MessageDetailsView.xaml.cs">
       <DependentUpon>MessageDetailsView.xaml</DependentUpon>
     </Compile>

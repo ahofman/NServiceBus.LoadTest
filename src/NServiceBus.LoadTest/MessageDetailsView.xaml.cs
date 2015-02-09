@@ -4,6 +4,9 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using System.Threading;
+using System.Threading.Tasks;
+using FirstFloor.ModernUI.Windows.Navigation;
 
 namespace NServiceBus.LoadTest
 {
@@ -17,54 +20,34 @@ namespace NServiceBus.LoadTest
 			InitializeComponent();
 		}
 
-	    public override void OnApplyTemplate()
-	    {
-	        base.OnApplyTemplate();
-            /*
-	        foreach (var item in this.PropertiesListBox.Items)
-	        {
-	            var container = PropertiesListBox.ItemContainerGenerator.ContainerFromItem(item);
-	            int childCount = VisualTreeHelper.GetChildrenCount(container);
-	            for (int i = 0; i < childCount; ++i)
-	            {
-	                var child = VisualTreeHelper.GetChild(container, i);
-                     
-	            }
-	          
-	        }
-
-	        var t = this.FindName("PropertyValueTextBox");
-            */
-	    }
-
-
-	    private void ModernFrame_Navigated(object sender, FirstFloor.ModernUI.Windows.Navigation.NavigationEventArgs e)
+	    private void ModernFrame_Navigated(object sender, NavigationEventArgs e)
 		{
 		}
 
-		public void OnFragmentNavigation(FirstFloor.ModernUI.Windows.Navigation.FragmentNavigationEventArgs e)
+		public void OnFragmentNavigation(FragmentNavigationEventArgs e)
 		{
 		    var assembly = SessionContext.Instance.MessageAssembly;
 		    var type = assembly.GetTypes().Single(t => t.Name == e.Fragment);
+			var m = Activator.CreateInstance(type, false);
 
 			DataContext = new MessageViewModel
 			{
-                Message = Activator.CreateInstance(type, false),
+                Message = m,
 				Properties = 
 					type.GetProperties().Select(p =>
-					new PropertyModel { PropertyInfo = p })
+					new PropertyModel { Message = m, PropertyInfo = p })
 			};
 		}
 
-		public void OnNavigatedFrom(FirstFloor.ModernUI.Windows.Navigation.NavigationEventArgs e)
+		public void OnNavigatedFrom(NavigationEventArgs e)
 		{
 		}
 
-		public void OnNavigatedTo(FirstFloor.ModernUI.Windows.Navigation.NavigationEventArgs e)
+		public void OnNavigatedTo(NavigationEventArgs e)
 		{
 		}
 
-		public void OnNavigatingFrom(FirstFloor.ModernUI.Windows.Navigation.NavigatingCancelEventArgs e)
+		public void OnNavigatingFrom(NavigatingCancelEventArgs e)
 		{
 		}
 
@@ -72,5 +55,6 @@ namespace NServiceBus.LoadTest
 	    {
 	        // bus.send
 	    }
+
 	}
 }

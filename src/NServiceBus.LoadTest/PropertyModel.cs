@@ -9,6 +9,7 @@ namespace NServiceBus.LoadTest
 {
     public class PropertyModel
     {
+		public object Message { get; set; }
         public PropertyInfo PropertyInfo { get; set; }
     }
 }
