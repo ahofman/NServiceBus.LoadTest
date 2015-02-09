@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NServiceBus.LoadTest", "NServiceBus.LoadTest\NServiceBus.LoadTest.csproj", "{566B8DC1-C2D4-4E81-8307-2E7AB5D7A68F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NServiceBus.LoadTest.TestMessageAssembly", "NServiceBus.LoadTest.TestMessageAssembly\NServiceBus.LoadTest.TestMessageAssembly.csproj", "{2FBE86D6-B92B-4466-BF92-374AA0747D54}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{566B8DC1-C2D4-4E81-8307-2E7AB5D7A68F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{566B8DC1-C2D4-4E81-8307-2E7AB5D7A68F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{566B8DC1-C2D4-4E81-8307-2E7AB5D7A68F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{566B8DC1-C2D4-4E81-8307-2E7AB5D7A68F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2FBE86D6-B92B-4466-BF92-374AA0747D54}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2FBE86D6-B92B-4466-BF92-374AA0747D54}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2FBE86D6-B92B-4466-BF92-374AA0747D54}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2FBE86D6-B92B-4466-BF92-374AA0747D54}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
