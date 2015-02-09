@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using FirstFloor.ModernUI.Windows.Navigation;
 
 namespace NServiceBus.LoadTest
 {
@@ -22,9 +23,12 @@ namespace NServiceBus.LoadTest
 	/// </summary>
 	public partial class BrowseForAssembly : UserControl
 	{
+        ILinkNavigator Navigator { get; set; }
 		public BrowseForAssembly()
 		{
 			InitializeComponent();
+
+            Navigator = new DefaultLinkNavigator();
 		}
 
 		private void Button_Click(object sender, RoutedEventArgs e)
@@ -35,6 +39,8 @@ namespace NServiceBus.LoadTest
 			{
 				var a = Assembly.LoadFrom(ofd.FileName);
 
+			    SessionContext.Instance.MessageAssembly = a;
+			    Navigator.Navigate(new Uri("/MessagesView.xaml", UriKind.Relative), this);
 
 			}
 		}

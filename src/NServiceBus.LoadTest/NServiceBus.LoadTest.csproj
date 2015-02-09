@@ -69,6 +69,7 @@
     <Compile Include="MessagesView.xaml.cs">
       <DependentUpon>MessagesView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SessionContext.cs" />
     <Page Include="BrowseForAssembly.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -122,12 +123,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\NServiceBus.LoadTest.TestMessageAssembly\NServiceBus.LoadTest.TestMessageAssembly.csproj">
-      <Project>{2fbe86d6-b92b-4466-bf92-374aa0747d54}</Project>
-      <Name>NServiceBus.LoadTest.TestMessageAssembly</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

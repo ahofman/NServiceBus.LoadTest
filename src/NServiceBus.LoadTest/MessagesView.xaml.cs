@@ -1,6 +1,5 @@
 ﻿using FirstFloor.ModernUI.Presentation;
 using FirstFloor.ModernUI.Windows;
-using NServiceBus.LoadTest.TestMessageAssembly;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,7 +30,11 @@ namespace NServiceBus.LoadTest
 
 			Links = new LinkCollection();
 
-			foreach (var t in typeof(CreateOrder).Assembly.GetTypes())
+		    var a = SessionContext.Instance.MessageAssembly;
+
+		    var types = a.GetTypes();
+
+			foreach (var t in types)
 			{
 				Links.Add(new Link { DisplayName = t.Name, Source = new Uri(string.Format("/MessageDetailsView.xaml#{0}", t.Name), UriKind.Relative) });
 			}

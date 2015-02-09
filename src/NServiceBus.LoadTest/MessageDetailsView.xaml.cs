@@ -1,19 +1,7 @@
 ﻿using FirstFloor.ModernUI.Windows;
-using NServiceBus.LoadTest.TestMessageAssembly;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace NServiceBus.LoadTest
 {
@@ -22,7 +10,6 @@ namespace NServiceBus.LoadTest
 	/// </summary>
 	public partial class MessageDetailsView : UserControl, IContent
 	{
-
 		public MessageDetailsView()
 		{
 			InitializeComponent();
@@ -34,9 +21,11 @@ namespace NServiceBus.LoadTest
 
 		public void OnFragmentNavigation(FirstFloor.ModernUI.Windows.Navigation.FragmentNavigationEventArgs e)
 		{
+		    var assembly = SessionContext.Instance.MessageAssembly;
+
 			DataContext = new MessageViewModel
 			{
-				Properties = typeof(CreateOrder).Assembly.GetTypes().Where( t => t.Name == e.Fragment ).Single()
+				Properties = assembly.GetTypes().Where( t => t.Name == e.Fragment ).Single()
 					.GetProperties().Select(p =>
 					new PropertyModel { PropertyInfo = p })
 			};
@@ -53,5 +42,10 @@ namespace NServiceBus.LoadTest
 		public void OnNavigatingFrom(FirstFloor.ModernUI.Windows.Navigation.NavigatingCancelEventArgs e)
 		{
 		}
+
+	    private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
+	    {
+	        // bus.send
+	    }
 	}
 }
