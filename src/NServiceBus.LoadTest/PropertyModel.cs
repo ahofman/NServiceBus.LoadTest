@@ -10,7 +10,5 @@ namespace NServiceBus.LoadTest
     public class PropertyModel
     {
         public PropertyInfo PropertyInfo { get; set; }
-
-
     }
 }

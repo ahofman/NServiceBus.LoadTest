@@ -8,6 +8,7 @@ namespace NServiceBus.LoadTest
 {
     public class MessageViewModel
     {
+        public object Message { get; set; }
         public IEnumerable<PropertyModel> Properties { get; set; }
     }
 }
