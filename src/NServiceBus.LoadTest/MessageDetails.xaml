@@ -3,26 +3,29 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mui="http://firstfloorsoftware.com/ModernUI"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
-        <ListBox ItemsSource="{Binding Properties}" Grid.IsSharedSizeScope="True">
-            <ListBox.ItemTemplate >
-                <DataTemplate>
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto" SharedSizeGroup="Name"></ColumnDefinition>
-                            <ColumnDefinition Width="*"></ColumnDefinition>
-                            <ColumnDefinition Width="Auto" SharedSizeGroup="NullLabel"></ColumnDefinition>
-                            <ColumnDefinition Width="Auto" SharedSizeGroup="NullCheckbox"></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0" Text="{Binding PropertyInfo.Name}"></TextBlock>
-                        <TextBox Grid.Column="1" Text="Type here"></TextBox>
-                        <TextBlock Grid.Column="2" Text="Null"></TextBlock>
-                        <CheckBox Grid.Column="3" ></CheckBox>
-                    </Grid>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
-    </Grid>
+    <mui:ModernFrame Navigated="ModernFrame_Navigated">
+        <Grid>
+            <ListBox ItemsSource="{Binding Properties}" Grid.IsSharedSizeScope="True">
+                <ListBox.ItemTemplate >
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" SharedSizeGroup="Name"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="Auto" SharedSizeGroup="NullLabel"></ColumnDefinition>
+                                <ColumnDefinition Width="Auto" SharedSizeGroup="NullCheckbox"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Text="{Binding PropertyInfo.Name}"></TextBlock>
+                            <TextBox Grid.Column="1" Text="Type here"></TextBox>
+                            <TextBlock Grid.Column="2" Text="Null"></TextBlock>
+                            <CheckBox Grid.Column="3" ></CheckBox>
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </Grid>
+    </mui:ModernFrame>
 </UserControl>

@@ -27,11 +27,7 @@ namespace NServiceBus.LoadTest
         {
             InitializeComponent();
 
-            DataContext = new MessageViewModel
-            {
-                Properties = typeof (SomeTestMessage).GetProperties().Select(p =>
-                    new PropertyModel {PropertyInfo = p})
-            };
+            
         }
     }
 }

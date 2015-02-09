@@ -1,4 +1,6 @@
-﻿using System;
+﻿using FirstFloor.ModernUI.Windows;
+using NServiceBus.LoadTest.TestMessageAssembly;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,11 +20,38 @@ namespace NServiceBus.LoadTest
 	/// <summary>
 	/// Interaction logic for MessageDetails.xaml
 	/// </summary>
-	public partial class MessageDetails : UserControl
+	public partial class MessageDetails : UserControl, IContent
 	{
+		
 		public MessageDetails()
 		{
 			InitializeComponent();
+		}
+
+		private void ModernFrame_Navigated(object sender, FirstFloor.ModernUI.Windows.Navigation.NavigationEventArgs e)
+		{
+		}
+
+		public void OnFragmentNavigation(FirstFloor.ModernUI.Windows.Navigation.FragmentNavigationEventArgs e)
+		{
+			DataContext = new MessageViewModel
+			{
+				Properties = typeof(CreateOrder).Assembly.GetTypes().Where( t => t.Name == e.Fragment ).Single()
+					.GetProperties().Select(p =>
+					new PropertyModel { PropertyInfo = p })
+			};
+		}
+
+		public void OnNavigatedFrom(FirstFloor.ModernUI.Windows.Navigation.NavigationEventArgs e)
+		{
+		}
+
+		public void OnNavigatedTo(FirstFloor.ModernUI.Windows.Navigation.NavigationEventArgs e)
+		{
+		}
+
+		public void OnNavigatingFrom(FirstFloor.ModernUI.Windows.Navigation.NavigatingCancelEventArgs e)
+		{
 		}
 	}
 }
