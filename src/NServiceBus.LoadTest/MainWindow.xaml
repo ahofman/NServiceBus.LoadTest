@@ -3,7 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mui="http://firstfloorsoftware.com/ModernUI"
         Title="MainWindow" Height="350" Width="525"
-                  ContentSource="/MessagesView.xaml">
+                  ContentSource="/BrowseForAssembly.xaml">
     <Grid>    
+       
     </Grid>
 </mui:ModernWindow>
