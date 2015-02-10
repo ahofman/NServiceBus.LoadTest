@@ -31,8 +31,14 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
-            <ListBox Grid.Row="0" Name="PropertiesListBox" ItemsSource="{Binding Properties}" Grid.IsSharedSizeScope="True">
-                <ListBox.ItemTemplate >
+            <ItemsControl
+                KeyboardNavigation.TabNavigation="Continue"
+                Grid.Row="0" 
+                Name="PropertiesListBox" 
+                ItemsSource="{Binding Properties}" 
+                Grid.IsSharedSizeScope="True"
+                HorizontalContentAlignment="Stretch">
+                <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <Grid>
                             <Grid.ColumnDefinitions>
@@ -41,14 +47,14 @@
                                 <ColumnDefinition Width="Auto" SharedSizeGroup="NullLabel"></ColumnDefinition>
                                 <ColumnDefinition Width="Auto" SharedSizeGroup="NullCheckbox"></ColumnDefinition>
                             </Grid.ColumnDefinitions>
-                            <TextBlock VerticalAlignment="Center" Grid.Column="0" Text="{Binding PropertyInfo.Name}"></TextBlock>
+                            <TextBlock  VerticalAlignment="Center" Grid.Column="0" Text="{Binding PropertyInfo.Name}"></TextBlock>
                             <TextBox Grid.Column="1" local:MessagePropertyBinding.MessagePropertyBinding="{Binding PropertyInfo.Name}"></TextBox>
                             <CheckBox Grid.Column="2"  Visibility="{Binding IsNullable, Converter={StaticResource BooleanToVisibilityConverter}}" ></CheckBox>
                             <TextBlock VerticalAlignment="Center" Grid.Column="3" Text="Set to null" Visibility="{Binding IsNullable, Converter={StaticResource BooleanToVisibilityConverter}}"></TextBlock>
                         </Grid>
                     </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
             <Button Grid.Row="1" Content="Send" Click="ButtonBase_OnClick">
             </Button>
         </Grid>

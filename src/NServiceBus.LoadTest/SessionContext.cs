@@ -1,11 +1,18 @@
 ﻿using NServiceBus;
+using System;
+using System.Collections.Generic;
 using System.Reflection;
 
 namespace NServiceBus.LoadTest
 {
     class SessionContext
     {
-        public Assembly MessageAssembly { get; set; }
+		private SessionContext()
+		{
+			MessageTypes = new List<Type>();
+		}
+
+        public IList<Type> MessageTypes { get; set; }
 
         public IBus Bus { get; set; }
 

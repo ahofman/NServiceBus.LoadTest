@@ -7,6 +7,7 @@ using System.Windows.Media;
 using System.Threading;
 using System.Threading.Tasks;
 using FirstFloor.ModernUI.Windows.Navigation;
+using FirstFloor.ModernUI.Windows.Controls;
 
 namespace NServiceBus.LoadTest
 {
@@ -15,6 +16,8 @@ namespace NServiceBus.LoadTest
 	/// </summary>
 	public partial class MessageDetailsView : UserControl, IContent
 	{
+		object _currentMessage;
+
 		public MessageDetailsView()
 		{
 			InitializeComponent();
@@ -26,16 +29,15 @@ namespace NServiceBus.LoadTest
 
 		public void OnFragmentNavigation(FragmentNavigationEventArgs e)
 		{
-		    var assembly = SessionContext.Instance.MessageAssembly;
-		    var type = assembly.GetTypes().Single(t => t.Name == e.Fragment);
-			var m = Activator.CreateInstance(type, false);
+		    var type = SessionContext.Instance.MessageTypes.Single(t => t.Name == e.Fragment);
+			_currentMessage = Activator.CreateInstance(type, false);
 
 			DataContext = new MessageViewModel
 			{
-                Message = m,
+				Message = _currentMessage,
 				Properties = 
 					type.GetProperties().Select(p =>
-					new PropertyModel { Message = m, PropertyInfo = p })
+					new PropertyModel { Message = _currentMessage, PropertyInfo = p })
 			};
 		}
 
@@ -53,7 +55,16 @@ namespace NServiceBus.LoadTest
 
 	    private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
 	    {
-	        // bus.send
+			SessionContext.Instance.Bus.Send(_currentMessage);
+
+			var dlg = new ModernDialog
+			{
+				Title = "Success!",
+				Content = "Message was sent successfully."
+			};
+
+			dlg.Buttons = new Button[] { dlg.OkButton };
+			dlg.ShowDialog();
 	    }
 
 	}

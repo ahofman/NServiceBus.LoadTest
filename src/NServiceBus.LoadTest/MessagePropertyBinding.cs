@@ -37,7 +37,6 @@ namespace NServiceBus.LoadTest
 					var binding = new Binding("Message." + (string)e.NewValue);
 					binding.Mode = BindingMode.TwoWay;
 					binding.ValidatesOnExceptions = true;
-					//binding.ValidationRules.Add(new DataAnnotationsValidationRule());
 					binding.UpdateSourceTrigger = UpdateSourceTrigger.LostFocus;
 					textBoxElement.SetBinding(TextBox.TextProperty, binding);
 				}

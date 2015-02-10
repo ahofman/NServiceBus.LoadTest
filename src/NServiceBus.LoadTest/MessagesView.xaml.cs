@@ -30,9 +30,7 @@ namespace NServiceBus.LoadTest
 
 			Links = new LinkCollection();
 
-		    var a = SessionContext.Instance.MessageAssembly;
-
-		    var types = a.GetTypes();
+			var types = SessionContext.Instance.MessageTypes;
 
 			foreach (var t in types)
 			{
