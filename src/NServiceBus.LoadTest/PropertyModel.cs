@@ -11,5 +11,16 @@ namespace NServiceBus.LoadTest
     {
 		public object Message { get; set; }
         public PropertyInfo PropertyInfo { get; set; }
+
+		public bool IsNullable
+		{
+			get
+			{
+				var type = PropertyInfo.PropertyType;
+				if (!type.IsValueType) return true; // ref-type
+				if (Nullable.GetUnderlyingType(type) != null) return true; // Nullable<T>
+				return false; // value-type
+			}
+		}
     }
 }

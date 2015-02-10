@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using FirstFloor.ModernUI.Windows.Navigation;
+using NServiceBus;
 
 namespace NServiceBus.LoadTest
 {
@@ -40,6 +41,8 @@ namespace NServiceBus.LoadTest
 				var a = Assembly.LoadFrom(ofd.FileName);
 
 			    SessionContext.Instance.MessageAssembly = a;
+			//	NServiceBus.Configure.With( 
+				
 			    Navigator.Navigate(new Uri("/MessagesView.xaml", UriKind.Relative), this);
 
 			}

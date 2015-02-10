@@ -6,9 +6,9 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <UserControl.Resources>
-        <Style TargetType="Button">
-            <Setter Property="MaxWidth" Value="200"></Setter>
-            <Setter Property="MaxHeight" Value="25"></Setter>
+        <Style TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
+            <Setter Property="MaxWidth" Value="250"></Setter>
+            <Setter Property="MaxHeight" Value="40"></Setter>
 
         </Style>
     </UserControl.Resources>
