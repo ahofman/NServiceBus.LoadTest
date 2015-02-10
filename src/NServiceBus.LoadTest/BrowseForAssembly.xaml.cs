@@ -1,21 +1,9 @@
-﻿using Microsoft.Win32;
+﻿using FirstFloor.ModernUI.Windows.Navigation;
+using Microsoft.Win32;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using FirstFloor.ModernUI.Windows.Navigation;
-using NServiceBus;
 
 namespace NServiceBus.LoadTest
 {
@@ -41,10 +29,8 @@ namespace NServiceBus.LoadTest
 				var a = Assembly.LoadFrom(ofd.FileName);
 
 			    SessionContext.Instance.MessageAssembly = a;
-			//	NServiceBus.Configure.With( 
-				
+			
 			    Navigator.Navigate(new Uri("/MessagesView.xaml", UriKind.Relative), this);
-
 			}
 		}
 	}
